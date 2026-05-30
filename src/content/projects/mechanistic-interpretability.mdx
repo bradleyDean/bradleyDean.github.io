@@ -1,0 +1,34 @@
+---
+title: "Mechanistic Interpretability Research — Qwen3-0.6B-Base"
+description: "Per-feature causal pipeline (activation + path patching) testing cross-layer feature persistence in a small transformer — copy-forward vs. distributed recomputation."
+date: "2026-05-01"
+tags: ["mechanistic interpretability", "transformers", "AI safety", "research"]
+draft: false
+---
+
+{/* TODO: write up this project in full — methods, figures, and findings. Placeholder below. */}
+
+This is the headline project: a per-feature causal pipeline using **activation patching**
+and **path patching** on Qwen3-0.6B-Base, designed to test whether features that appear in
+early layers are copy-forwarded into later layers or recomputed in a distributed form.
+
+## Overview
+
+TODO: add a short overview, motivation, and the core question.
+
+## Method
+
+At a high level, patching measures the causal effect of a component's activation on a target
+metric. For a logit difference metric $\mathcal{M}$, the patched effect of replacing a clean
+activation $a$ with a corrupted activation $a'$ is:
+
+$$
+\Delta \mathcal{M} = \mathcal{M}\big(\text{run with } a' \big) - \mathcal{M}\big(\text{run with } a\big)
+$$
+
+TODO: expand on activation vs. path patching and the per-feature setup.
+
+## Findings
+
+TODO: summarize results and figures. Screenshots can be dropped into
+`/public/images/mechanistic-interpretability/` and referenced here.

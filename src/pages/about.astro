@@ -1,0 +1,76 @@
+---
+import Container from "@components/Container.astro";
+import PageLayout from "@layouts/PageLayout.astro";
+import Link from "@components/Link.astro";
+import { ABOUT } from "@consts";
+---
+
+<PageLayout title={ABOUT.TITLE} description={ABOUT.DESCRIPTION}>
+  <Container>
+    <div class="space-y-10">
+      <div class="animate font-semibold text-black dark:text-white">
+        About
+      </div>
+
+      <section class="animate space-y-4">
+        {/* TODO: refine this bio. Placeholder narrative below. */}
+        <article class="space-y-4">
+          <p>
+            I started my career as a computer science and mathematics teacher,
+            spending more than a decade in the classroom, including years as a
+            math department chair building a CS program from scratch. I then
+            pivoted into industry as a full-stack software engineer, and most
+            recently completed a Master of Science in Artificial Intelligence and
+            Machine Learning at Johns Hopkins.
+          </p>
+          <p>
+            That arc — teaching, then engineering, then AI research — is
+            deliberate. I care about understanding how machine-learning systems
+            actually work, and about explaining hard ideas clearly. Today I focus
+            on interpretability research, applied ML, and education.
+          </p>
+        </article>
+      </section>
+
+      <section class="animate space-y-4">
+        <h5 class="font-semibold text-black dark:text-white">
+          Education
+        </h5>
+        <ul class="space-y-2">
+          <li>
+            <div class="font-semibold text-black dark:text-white">
+              Johns Hopkins University
+            </div>
+            <div class="text-sm opacity-75">
+              M.S. in Artificial Intelligence &amp; Machine Learning · 4.0 GPA
+            </div>
+          </li>
+          <li>
+            <div class="font-semibold text-black dark:text-white">
+              The College of Wooster
+            </div>
+            <div class="text-sm opacity-75">
+              B.A. in Physics, Minor in Mathematics
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section class="animate space-y-4">
+        <h5 class="font-semibold text-black dark:text-white">
+          Resume
+        </h5>
+        <article>
+          <p>
+            Download my resume:
+            <Link href="/resume-ai-engineering.pdf" external>
+              AI / ML &amp; engineering (PDF)
+            </Link>.
+            For a teaching-focused version, see the
+            <Link href="/teaching">teaching page</Link>.
+          </p>
+        </article>
+      </section>
+    </div>
+  </Container>
+</PageLayout>

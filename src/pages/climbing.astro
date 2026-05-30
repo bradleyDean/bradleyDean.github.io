@@ -1,0 +1,95 @@
+---
+import Container from "@components/Container.astro";
+import PageLayout from "@layouts/PageLayout.astro";
+import { CLIMBING } from "@consts";
+
+// TODO: replace these placeholder entries with real accomplishments.
+const accomplishments = [
+  {
+    title: "TODO: Accomplishment title",
+    location: "TODO: Location",
+    grade: "TODO: Grade / length",
+    year: "TODO",
+    note: "TODO: optional 1–2 sentence note about this climb or feat.",
+  },
+  {
+    title: "TODO: Accomplishment title",
+    location: "TODO: Location",
+    grade: "TODO: Grade / length",
+    year: "TODO",
+    note: "TODO: optional 1–2 sentence note.",
+  },
+  {
+    title: "TODO: Accomplishment title",
+    location: "TODO: Location",
+    grade: "TODO: Grade / length",
+    year: "TODO",
+    note: "",
+  },
+];
+
+// TODO: drop ~6–10 images into /public/images/climbing/ and list their filenames here.
+const galleryImages: { src: string; alt: string }[] = [];
+---
+
+<PageLayout title={CLIMBING.TITLE} description={CLIMBING.DESCRIPTION}>
+  <Container>
+    <div class="space-y-10">
+      <div class="animate font-semibold text-black dark:text-white">
+        Climbing Etc
+      </div>
+
+      <section class="animate space-y-4">
+        <article>
+          {/* TODO: write framing intro for mixed audience of climbers and non-climbers */}
+          <p>
+            Outside of work I climb and highline. This page collects a few
+            accomplishments and photos. (Intro paragraph coming soon.)
+          </p>
+        </article>
+      </section>
+
+      <section class="animate space-y-4">
+        <h5 class="font-semibold text-black dark:text-white">
+          Accomplishments
+        </h5>
+        <ul class="space-y-6">
+          {accomplishments.map(item => (
+            <li class="space-y-1">
+              <div class="font-semibold text-black dark:text-white">
+                {item.title}
+              </div>
+              <div class="text-sm opacity-75">
+                {item.location} · {item.grade} · {item.year}
+              </div>
+              {item.note && <p class="text-sm">{item.note}</p>}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="animate space-y-4">
+        <h5 class="font-semibold text-black dark:text-white">
+          Photos
+        </h5>
+        {galleryImages.length > 0 ? (
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+            {galleryImages.map(img => (
+              <img
+                src={img.src}
+                alt={img.alt}
+                loading="lazy"
+                class="rounded-lg border border-black/15 dark:border-white/20 object-cover w-full aspect-square"
+              />
+            ))}
+          </div>
+        ) : (
+          <p class="text-sm opacity-75">
+            {/* TODO: add climbing & highlining photos to /public/images/climbing/ and populate galleryImages above. */}
+            Photo gallery coming soon.
+          </p>
+        )}
+      </section>
+    </div>
+  </Container>
+</PageLayout>

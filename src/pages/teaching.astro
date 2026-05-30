@@ -1,0 +1,86 @@
+---
+import { getCollection } from "astro:content";
+import Container from "@components/Container.astro";
+import PageLayout from "@layouts/PageLayout.astro";
+import ArrowCard from "@components/ArrowCard.astro";
+import Link from "@components/Link.astro";
+import { TEACHING } from "@consts";
+
+const artifacts = (await getCollection("teaching"))
+  .filter(entry => !entry.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<PageLayout title={TEACHING.TITLE} description={TEACHING.DESCRIPTION}>
+  <Container>
+    <div class="space-y-10">
+      <div class="animate font-semibold text-black dark:text-white">
+        Teaching
+      </div>
+
+      <section class="animate space-y-4">
+        <h5 class="font-semibold text-black dark:text-white">
+          Teaching philosophy
+        </h5>
+        <article>
+          {/* TODO: lead with the diagnostic, root-cause-first teaching style developed at Hillside. */}
+          <p>
+            I teach by diagnosing root causes first: before re-explaining a topic, I
+            work to find the specific conceptual gap a student is missing, then rebuild
+            from there. More to come on this page soon.
+          </p>
+        </article>
+      </section>
+
+      <section class="animate space-y-4">
+        <h5 class="font-semibold text-black dark:text-white">
+          Background
+        </h5>
+        <article>
+          <ul class="space-y-2">
+            <li>12+ years teaching computer science and mathematics.</li>
+            <li>Math Department Chair at Hillside Student Community (2010–2017); built the CS program from scratch.</li>
+            <li>Designed the first formal CS course at The Northwest School.</li>
+            <li>Curriculum developer at Khan Academy.</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="animate space-y-4">
+        <div class="flex flex-wrap gap-y-2 items-center justify-between">
+          <h5 class="font-semibold text-black dark:text-white">
+            Artifacts
+          </h5>
+        </div>
+        {artifacts.length > 0 ? (
+          <ul class="flex flex-col gap-4">
+            {artifacts.map(entry => (
+              <li>
+                <ArrowCard entry={entry} />
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p class="text-sm opacity-75">
+            {/* TODO: add 1–3 teaching artifacts (sample lesson, hiring-process writeup, recorded lesson). */}
+            Sample lessons and writeups coming soon.
+          </p>
+        )}
+      </section>
+
+      <section class="animate space-y-4">
+        <h5 class="font-semibold text-black dark:text-white">
+          Resume
+        </h5>
+        <article>
+          <p>
+            Download my CS faculty resume:
+            <Link href="/resume-cs-faculty.pdf" external>
+              CS faculty (PDF)
+            </Link>.
+          </p>
+        </article>
+      </section>
+    </div>
+  </Container>
+</PageLayout>
